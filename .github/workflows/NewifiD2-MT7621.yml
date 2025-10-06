@@ -10,8 +10,8 @@ on:
       - master
     paths:
       - 'NewifiD2/NewifiD2.config'
-  schedule:
-    - cron: 0 16 * * *
+  #schedule:
+  #  - cron: 0 16 * * *
   # watch:
   #   types: started
 
@@ -23,7 +23,7 @@ env:
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   MRG_ADD_SH: NewifiD2/NewifiD2.sh
-#   SSH_ACTIONS: false
+  SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   TZ: Asia/Shanghai
@@ -31,10 +31,11 @@ env:
   PRODUCT_NAME: NewifiD2
 
 jobs:
-  build:
-    runs-on: ubuntu-20.04
+   _openwrt:
+    runs-on: ubuntu-22.04
     permissions:
       contents: write
+
     # if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
